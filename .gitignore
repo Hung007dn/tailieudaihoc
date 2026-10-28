@@ -5,6 +5,8 @@ Thumbs.db
 
 # IDE and build outputs
 **/target/
+**/Debug/
+**/Release/
 **/.idea/
 **/.vscode/
 **/.git/
@@ -31,6 +33,10 @@ private_key.pem
 # Large lab fixture files (GitHub file-size limit)
 **/file_1GB*.txt
 **/file_100MB*.txt
+
+# Reproducible machine-learning datasets (download separately)
+**/data/cifar-10-python.tar.gz
+**/data/cifar-10-batches-py/
 
 # Course PDFs over GitHub's 100 MiB per-file limit
 **/CEHv13 - Lab Manual.pdf
