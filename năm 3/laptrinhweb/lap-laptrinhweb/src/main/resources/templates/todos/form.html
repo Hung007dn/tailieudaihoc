@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${todoId == null ? 'New Todo' : 'Edit Todo'}">Todo Form</title>
+    <link rel="stylesheet" th:href="@{/css/todos.css}">
+</head>
+<body>
+<main class="form-shell">
+    <a class="back-link" th:href="@{/todos}">&larr; Back to list</a>
+
+    <header class="form-header">
+        <p class="eyebrow" th:text="${todoId == null ? 'CREATE TASK' : 'UPDATE TASK'}">CREATE TASK</p>
+        <h1 th:text="${todoId == null ? 'New todo' : 'Edit todo'}">New todo</h1>
+    </header>
+
+    <form class="todo-form"
+          th:object="${todo}"
+          th:action="${todoId == null} ? @{/todos} : @{/todos/{id}(id=${todoId})}"
+          method="post">
+        <div class="field">
+            <label for="title">Title <span aria-hidden="true">*</span></label>
+            <input id="title" type="text" th:field="*{title}" maxlength="100"
+                   th:classappend="${#fields.hasErrors('title')} ? ' input-error'"
+                   autocomplete="off" autofocus>
+            <p class="field-error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+                Title error
+            </p>
+        </div>
+
+        <div class="field">
+            <label for="description">Description</label>
+            <textarea id="description" th:field="*{description}" maxlength="500" rows="5"
+                      th:classappend="${#fields.hasErrors('description')} ? ' input-error'"></textarea>
+            <p class="field-error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}">
+                Description error
+            </p>
+        </div>
+
+        <div class="field-row">
+            <div class="field">
+                <label for="dueDate">Due date</label>
+                <input id="dueDate" type="date" th:field="*{dueDate}">
+            </div>
+
+            <label class="checkbox-field" for="completed">
+                <input id="completed" type="checkbox" th:field="*{completed}">
+                <span>Completed</span>
+            </label>
+        </div>
+
+        <div class="form-actions">
+            <button class="button button-primary" type="submit">Save todo</button>
+            <a class="button button-secondary" th:href="@{/todos}">Cancel</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

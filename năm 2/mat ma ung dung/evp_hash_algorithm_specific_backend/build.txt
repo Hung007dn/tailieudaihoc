@@ -1,0 +1,32 @@
+Build CLI:
+g++ -std=c++17 -O2 -Wall -Wextra ^
+  -Iinclude ^
+  -IE:\utecrypto\include ^
+  src\evp_hash_direct_tool.cpp ^
+  src\evp_hash_direct_main.cpp ^
+  -LD:\utecrypto\lib64 ^
+  -l:libcrypto.a ^
+  -lws2_32 -lcrypt32 ^
+  -o evp_hash_direct_lab.exe
+
+Build DLL:
+g++ -std=c++17 -O2 -Wall -Wextra ^
+  -DEVPHASHDIRECT_EXPORTS ^
+  -Iinclude ^
+  -IE:\utecrypto\include ^
+  src\evp_hash_direct_tool.cpp ^
+  src\evp_hash_direct_c_api.cpp ^
+  -shared ^
+  -LD:\utecrypto\lib64 ^
+  -l:libcrypto.a ^
+  -lws2_32 -lcrypt32 ^
+  -o evphashdirect.dll ^
+  -Wl,--out-implib,libevphashdirect.dll.a
+
+Test
+
+evp_hash_direct_lab.exe hash --alg sha256 --text abc
+evp_hash_direct_lab.exe hash --alg shake128 --text abc --xof-len 32
+Copy the digest context (hash state) from one EVP_MD_CTX to another.
+Streaming-copy demo using EVP_MD_CTX_copy_ex
+evp_hash_direct_lab.exe stream-demo --alg sha256

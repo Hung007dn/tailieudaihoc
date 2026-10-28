@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo List</title>
+    <link rel="stylesheet" th:href="@{/css/todos.css}">
+</head>
+<body>
+<main class="page-shell">
+    <header class="page-header">
+        <div>
+            <p class="eyebrow">SPRING BOOT LAB 1</p>
+            <h1>Todo list</h1>
+            <p class="subtitle">Keep the next task clear and close at hand.</p>
+        </div>
+        <a class="button button-primary" th:href="@{/todos/new}">New todo</a>
+    </header>
+
+    <section class="table-section" aria-labelledby="todo-heading">
+        <div class="section-heading">
+            <h2 id="todo-heading">Tasks</h2>
+            <span class="count" th:text="${#lists.size(todos)} + ' total'">0 total</span>
+        </div>
+
+        <div class="empty-state" th:if="${#lists.isEmpty(todos)}">
+            <h3>No todos yet</h3>
+            <p>Create your first task to get started.</p>
+        </div>
+
+        <div class="table-wrap" th:unless="${#lists.isEmpty(todos)}">
+            <table>
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Due date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="todo : ${todos}">
+                    <td class="id-cell" th:text="${todo.id}">1</td>
+                    <td>
+                        <strong th:text="${todo.title}">Example task</strong>
+                        <span class="description"
+                              th:if="${todo.description != null and !todo.description.isBlank()}"
+                              th:text="${todo.description}">Description</span>
+                    </td>
+                    <td th:text="${todo.dueDate != null ? todo.dueDate : '-'}">-</td>
+                    <td>
+                        <span class="status status-done" th:if="${todo.completed}">Completed</span>
+                        <span class="status status-open" th:unless="${todo.completed}">Open</span>
+                    </td>
+                    <td class="actions">
+                        <a class="button button-secondary"
+                           th:href="@{/todos/{id}/edit(id=${todo.id})}">Edit</a>
+                        <form th:action="@{/todos/{id}/delete(id=${todo.id})}" method="post">
+                            <button class="button button-danger" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+</body>
+</html>

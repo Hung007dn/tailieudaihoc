@@ -1,0 +1,13 @@
+../Core/Src/main.c:43:6:UART_SendString	2
+../Core/Src/main.c:52:6:UART_SendNumber	4
+../Core/Src/main.c:89:6:LED_AllOff	1
+../Core/Src/main.c:96:6:LED_AllOn	1
+../Core/Src/main.c:103:6:LED_GreenOn	1
+../Core/Src/main.c:110:6:LED_YellowOn	1
+../Core/Src/main.c:117:6:LED_RedOn	1
+../Core/Src/main.c:131:5:main	19
+../Core/Src/main.c:388:6:SystemClock_Config	4
+../Core/Src/main.c:453:13:MX_ADC1_Init	3
+../Core/Src/main.c:503:13:MX_USART1_UART_Init	2
+../Core/Src/main.c:538:13:MX_GPIO_Init	1
+../Core/Src/main.c:609:6:Error_Handler	1

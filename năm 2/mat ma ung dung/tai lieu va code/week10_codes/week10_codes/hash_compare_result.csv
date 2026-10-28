@@ -1,0 +1,6 @@
+"Original_File","Modified_File","Size_Bytes","Old_SHA256","New_SHA256","Same_Hash"
+"file_1KB.txt","file_1KB_modified.txt","0",,,"True"
+"file_1MB.txt","file_1MB_modified.txt","0",,,"True"
+"file_10MB.txt","file_10MB_modified.txt","0",,,"True"
+"file_100MB.txt","file_100MB_modified.txt","0",,,"True"
+"file_1GB.txt","file_1GB_modified.txt","0",,,"True"

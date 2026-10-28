@@ -1,0 +1,24 @@
+CLI
+g++ -std=c++17 -O2 -Wall -Wextra ^
+  -Iinclude ^
+  src\sha2_length_extension.cpp ^
+  tests\test_sha2_lenext.cpp ^
+  -o test_sha2_lenext.exe
+
+g++ -std=c++17 -O2 -Wall -Wextra ^
+  -Iinclude ^
+  src\sha2_length_extension.cpp ^
+  src\sha2_lenext_main.cpp ^
+  -o sha2_lenext_lab.exe
+
+attacks
+Original message
+user=alice&role=user
+key: 123456cgsaoiuhgd
+MAC=sha256(user=alice&role=user123456cgsaoiuhgd)
+
+sha2_lenext_lab.exe forge-sha256 ^
+--message-text "user=anh&role=bahung" ^
+--mac 7977f8c836833b3e2bfb3fc7f3e6c46039018d7ea12873a8089fb3a0664743de ^
+--guess-secret-len 10 ^
+--suffix-text "&role=admin"

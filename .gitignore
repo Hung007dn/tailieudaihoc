@@ -1,0 +1,35 @@
+# Temporary/editor files
+~$*
+.DS_Store
+Thumbs.db
+
+# IDE and build outputs
+**/target/
+**/.idea/
+**/.vscode/
+**/.git/
+**/venv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+
+# Local secrets and private keys
+.env
+.env.*
+*_priv.pem
+private_key.pem
+*.p12
+*.pfx
+
+# Installers and videos excluded from this repository
+/VMware Workstation Pro Full 17.6.2 Build 24409262/
+*.mp4
+
+# Large lab fixture files (GitHub file-size limit)
+**/file_1GB*.txt
+**/file_100MB*.txt
+
+# Course PDFs over GitHub's 100 MiB per-file limit
+**/CEHv13 - Lab Manual.pdf
+**/CEHv13 - Module 06 - System Hacking.pdf
+**/CEHv13 - Module 07 - Malware Threats.pdf
